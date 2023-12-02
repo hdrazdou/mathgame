@@ -1,0 +1,549 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeEditing/Unity/AdditionalFileLayout/Pattern/@EntryValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"
+          xmlns:unity="urn:schemas-jetbrains-com:member-reordering-patterns-unity"&gt;
+    
+    &lt;TypePattern DisplayName="Unity Classes" RemoveRegions="All" Priority="150"&gt;
+        &lt;TypePattern.Match&gt;
+            &lt;unity:SerializableClass /&gt;
+        &lt;/TypePattern.Match&gt;
+
+        &lt;Region Name="Public Nested Types" Priority="150"&gt;
+            &lt;Entry Priority="150" DisplayName="Nested Types"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Type" /&gt;
+                        &lt;Access Is="Public" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Variables" Priority="150"&gt;
+            &lt;Entry Priority="100" DisplayName="Static Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Field" /&gt;
+                        &lt;Static/&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="100" DisplayName="Const Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Constant" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="100" DisplayName="Public Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Public" /&gt;
+                        &lt;Kind Is="Field" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="100" DisplayName="Unity Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;unity:SerializedField /&gt;
+                &lt;/Entry.Match&gt;
+
+                &lt;!-- No sorting --&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="50" DisplayName="Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Field" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Readonly /&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Events" Priority="130"&gt;
+            &lt;Entry Priority="100" DisplayName="Events"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Event" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Static /&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+
+        &lt;Region Name="Properties" Priority="120"&gt;
+            &lt;Entry Priority="100" DisplayName="Public Properties"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Property" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Setup/Teardown" Priority="100"&gt;
+            &lt;Entry DisplayName="Setup/Teardown Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;Or&gt;
+                        &lt;Kind Is="Constructor" /&gt;
+                        &lt;Kind Is="Destructor" /&gt;
+                    &lt;/Or&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Kind Order="Constructor" /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry DisplayName="Zenject Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Method" /&gt;
+                        &lt;HasAttribute Name="Inject" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Unity lifecycle" Priority="150"&gt;
+            &lt;Entry DisplayName="Unity Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;unity:EventFunction /&gt;
+                &lt;/Entry.Match&gt;
+
+                &lt;Entry.SortBy&gt;
+                    &lt;unity:EventFunctionName /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="${0}" Priority="120"&gt;
+            &lt;Region.GroupBy&gt;
+                &lt;ImplementsInterface Immediate="True" /&gt;
+            &lt;/Region.GroupBy&gt;
+            &lt;Entry DisplayName="Interface Members"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Method" /&gt;
+                        &lt;ImplementsInterface Name="System.IDisposable" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="${0}" Priority="110"&gt;
+            &lt;Region.GroupBy&gt;
+                &lt;ImplementsInterface Immediate="True" /&gt;
+            &lt;/Region.GroupBy&gt;
+            &lt;Entry DisplayName="Interface Members"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Member" /&gt;
+                        &lt;ImplementsInterface /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;ImplementsInterface Immediate="True" /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Public methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Public Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Public" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Static /&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Protected methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Protected Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Protected" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Private methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Private Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Private" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Local data" Priority="150"&gt;
+            &lt;Entry DisplayName="Local data"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;Or&gt;
+                        &lt;Kind Is="Type" /&gt;
+                    &lt;/Or&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Entry DisplayName="All other members" /&gt;
+
+        &lt;Entry DisplayName="Nested Types"&gt;
+            &lt;Entry.Match&gt;
+                &lt;Kind Is="Type" /&gt;
+            &lt;/Entry.Match&gt;
+        &lt;/Entry&gt;
+
+    &lt;/TypePattern&gt;
+&lt;/Patterns&gt;</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=RedundantDeclarationSemicolon/@EntryIndexedValue">WARNING</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=SuggestVarOrType_005FBuiltInTypes/@EntryIndexedValue">ERROR</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=SuggestVarOrType_005FElsewhere/@EntryIndexedValue">ERROR</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=SuggestVarOrType_005FSimpleTypes/@EntryIndexedValue">ERROR</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/Profiles/=Fungi/@EntryIndexedValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Profile name="Fungi"&gt;&lt;ShaderLabReformatCode&gt;True&lt;/ShaderLabReformatCode&gt;&lt;CSReformatCode&gt;True&lt;/CSReformatCode&gt;&lt;CSCodeStyleAttributes ArrangeVarStyle="True" ArrangeTypeAccessModifier="True" ArrangeTypeMemberAccessModifier="True" SortModifiers="True" ArrangeArgumentsStyle="True" RemoveRedundantParentheses="True" AddMissingParentheses="True" ArrangeBraces="True" ArrangeAttributes="True" ArrangeCodeBodyStyle="True" ArrangeTrailingCommas="True" ArrangeObjectCreation="True" ArrangeDefaultValue="True" ArrangeNamespaces="True" ArrangeNullCheckingPattern="True" /&gt;&lt;CSArrangeQualifiers&gt;True&lt;/CSArrangeQualifiers&gt;&lt;CSFixBuiltinTypeReferences&gt;True&lt;/CSFixBuiltinTypeReferences&gt;&lt;CppCodeStyleCleanupDescriptor /&gt;&lt;XAMLCollapseEmptyTags&gt;False&lt;/XAMLCollapseEmptyTags&gt;&lt;CSOptimizeUsings&gt;&lt;OptimizeUsings&gt;True&lt;/OptimizeUsings&gt;&lt;/CSOptimizeUsings&gt;&lt;CSReorderTypeMembers&gt;True&lt;/CSReorderTypeMembers&gt;&lt;CSMakeFieldReadonly&gt;True&lt;/CSMakeFieldReadonly&gt;&lt;RemoveCodeRedundancies&gt;True&lt;/RemoveCodeRedundancies&gt;&lt;IDEA_SETTINGS&gt;&amp;lt;profile version="1.0"&amp;gt;
+  &amp;lt;option name="myName" value="Fungi" /&amp;gt;
+&amp;lt;/profile&amp;gt;&lt;/IDEA_SETTINGS&gt;&lt;RIDER_SETTINGS&gt;&amp;lt;profile&amp;gt;
+  &amp;lt;Language id="CSS"&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Dart"&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="EditorConfig"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="HTML"&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="HTTP Request"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Handlebars"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Ini"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="JSON"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Markdown"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="Properties"&amp;gt;
+    &amp;lt;Reformat&amp;gt;true&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="RELAX-NG"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="SQL"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="XML"&amp;gt;
+    &amp;lt;OptimizeImports&amp;gt;false&amp;lt;/OptimizeImports&amp;gt;
+    &amp;lt;Rearrange&amp;gt;false&amp;lt;/Rearrange&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+  &amp;lt;Language id="yaml"&amp;gt;
+    &amp;lt;Reformat&amp;gt;false&amp;lt;/Reformat&amp;gt;
+  &amp;lt;/Language&amp;gt;
+&amp;lt;/profile&amp;gt;&lt;/RIDER_SETTINGS&gt;&lt;/Profile&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/SilentCleanupProfile/@EntryValue">Fungi</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_FOR/@EntryValue">Required</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_FOREACH/@EntryValue">Required</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_IFELSE/@EntryValue">Required</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_WHILE/@EntryValue">Required</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/TRAILING_COMMA_IN_MULTILINE_LISTS/@EntryValue">True</s:Boolean>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_AUTO_PROPERTY/@EntryValue">0</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_FIELD/@EntryValue">0</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_SINGLE_LINE_TYPE/@EntryValue">0</s:Int64>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/EMPTY_BLOCK_STYLE/@EntryValue">TOGETHER_SAME_LINE</s:String>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_CODE/@EntryValue">1</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_DECLARATIONS/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_ATTRIBUTE_ARRANGEMENT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_EXPR_MEMBER_ARRANGEMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_SWITCH_EXPRESSION_ARRANGEMENT/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_EXPR_METHOD_ON_SINGLE_LINE/@EntryValue">NEVER</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_SIMPLE_EMBEDDED_STATEMENT_ON_SAME_LINE/@EntryValue">NEVER</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_WHILE_ON_NEW_LINE/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/STICK_COMMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/UnityCSharpFormatting/ENFORCE_CUSTOM_HEADER_FORMATTING/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CSharpFileLayoutPatterns/Pattern/@EntryValue">&lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"&gt;
+    
+    &lt;TypePattern DisplayName="Public" RemoveRegions="All"&gt;
+        &lt;Region Name="Public Nested Types" Priority="150"&gt;
+            &lt;Entry Priority="150" DisplayName="Nested Types"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Type" /&gt;
+                        &lt;Access Is="Public" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+        
+        &lt;Region Name="Variables" Priority="150"&gt;
+            &lt;Entry Priority="100" DisplayName="Static Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Field" /&gt;
+                        &lt;Static/&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="100" DisplayName="Const Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Constant" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry Priority="100" DisplayName="Public Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Public" /&gt;
+                        &lt;Kind Is="Field" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+            
+            &lt;Entry Priority="50" DisplayName="Fields"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Field" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Readonly /&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Events" Priority="130"&gt;
+            &lt;Entry Priority="100" DisplayName="Events"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Event" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Static /&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+
+        &lt;Region Name="Properties" Priority="120"&gt;
+            &lt;Entry Priority="100" DisplayName="Public Properties"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Property" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Access Order="Public Internal Protected ProtectedInternal Private"/&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Setup/Teardown" Priority="150"&gt;
+            &lt;Entry DisplayName="Setup/Teardown Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;Or&gt;
+                        &lt;Kind Is="Constructor" /&gt;
+                        &lt;Kind Is="Destructor" /&gt;
+                    &lt;/Or&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Kind Order="Constructor" /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+
+            &lt;Entry DisplayName="Inject"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Method" /&gt;
+                        &lt;HasAttribute Name="Inject"/&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name/&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="${0}" Priority="120"&gt;
+            &lt;Region.GroupBy&gt;
+                &lt;ImplementsInterface Immediate="True" /&gt;
+            &lt;/Region.GroupBy&gt;
+            &lt;Entry DisplayName="Interface Members"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Method" /&gt;
+                        &lt;ImplementsInterface Name="System.IDisposable" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="${0}" Priority="110"&gt;
+            &lt;Region.GroupBy&gt;
+                &lt;ImplementsInterface Immediate="True" /&gt;
+            &lt;/Region.GroupBy&gt;
+            &lt;Entry DisplayName="Interface Members"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Kind Is="Member" /&gt;
+                        &lt;ImplementsInterface /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;ImplementsInterface Immediate="True" /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Public methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Public Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Public" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Static /&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Protected methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Protected Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Protected" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Private methods" Priority="100"&gt;
+            &lt;Entry Priority="100" DisplayName="Private Methods"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;And&gt;
+                        &lt;Access Is="Private" /&gt;
+                        &lt;Kind Is="Method" /&gt;
+                    &lt;/And&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Region Name="Local data" Priority="150"&gt;
+            &lt;Entry DisplayName="Local data"&gt;
+                &lt;Entry.Match&gt;
+                    &lt;Or&gt;
+                        &lt;Kind Is="Type" /&gt;
+                    &lt;/Or&gt;
+                &lt;/Entry.Match&gt;
+                &lt;Entry.SortBy&gt;
+                    &lt;Name /&gt;
+                &lt;/Entry.SortBy&gt;
+            &lt;/Entry&gt;
+        &lt;/Region&gt;
+
+        &lt;Entry DisplayName="All other members" /&gt;
+
+        &lt;Entry DisplayName="Nested Types"&gt;
+            &lt;Entry.Match&gt;
+                &lt;Kind Is="Type" /&gt;
+            &lt;/Entry.Match&gt;
+        &lt;/Entry&gt;
+
+    &lt;/TypePattern&gt;
+&lt;/Patterns&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForBuiltInTypes/@EntryValue">UseExplicitType</s:String>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForOtherTypes/@EntryValue">UseExplicitType</s:String>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForSimpleTypes/@EntryValue">UseExplicitType</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Event/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="On" Suffix="" Style="AaBb" /&gt;</s:String>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ECSharpKeepExistingMigration/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ECSharpPlaceEmbeddedOnSameLineMigration/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ECSharpUseContinuousIndentInsideBracesMigration/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EMigrateBlankLinesAroundFieldToBlankLinesAroundProperty/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
